@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diagonal Cursor</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #1e1e1e, #121212);
+      cursor: none; /* Hide default cursor */
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background-color: crimson;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px crimson;
+      transition: transform 0.1s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor"></div>
+
+  <script>
+    const cursor = document.querySelector('.cursor');
+
+    document.addEventListener('mousemove', (e) => {
+      const offsetX = 50;  // adjust for diagonal offset
+      const offsetY = -50;
+      cursor.style.left = `${e.clientX + offsetX}px`;
+      cursor.style.top = `${e.clientY + offsetY}px`;
+    });
+  </script>
+</body>
+</html>
